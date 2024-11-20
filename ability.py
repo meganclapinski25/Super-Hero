@@ -6,8 +6,8 @@ class Ability:
         self.max_damage = max_damage
         
     def attack(self):
-        random_value = random.randint(0,self.max_damage)
-        return random_value   
+        random_ability = random.randint(0,self.max_damage)
+        return random_ability   
     
 if __name__ == "__main__":
   # If you run this file from the terminal

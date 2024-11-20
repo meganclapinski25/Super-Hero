@@ -2,6 +2,7 @@ import random
 from ability import Ability
 from armor import Armor
 from weapon import Weapon
+from team import Team
 
 
 class Hero:
@@ -72,6 +73,10 @@ class Hero:
             return True  
     def add_weapon(self, weapon):
         self.abilities.append(weapon)
+        
+        
+        
+
         
 if __name__ =="__main__":
    # define an ability and a weapon
