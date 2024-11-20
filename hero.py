@@ -74,7 +74,22 @@ class Hero:
         self.abilities.append(weapon)
         
 if __name__ =="__main__":
-    hero = Hero("Wonder Woman")
-    weapon = Weapon("Lasso of Truth", 90)
-    hero.add_weapon(weapon)
-    print(hero.attack())
+   # define an ability and a weapon
+    # both have the same max damage
+    eye_rays = Ability('Eye Rays', 50)
+    laser_blast = Weapon('Laser Blast', 50)
+
+    # Let's put these in an array together
+    # This list contains different types: Ability and Weapon
+    powers = [eye_rays, laser_blast]
+
+    # We know that all Abilities and Weapons share the same attribute
+    for power in powers:
+        print(power.max_damage)
+
+    # We know that all Abilities and Weapns implement the attack method
+    for power in powers:
+        print(power.attack())
+
+    # Note! While both implement attack() a Weapon will always return
+    # a higher average damage!
