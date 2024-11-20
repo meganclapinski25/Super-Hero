@@ -15,19 +15,22 @@ class Hero:
     
     #Fight method 
     def fight (self,opponent):
-        self.opponent = opponent
-        # TODO: Fight each hero until a victor emerges.
-        # Phases to implement:
-        #1) randomly choose winner,
-        # Hint: Look into random library, more specifically the choice method
-        winner = random.choice([self,opponent])
-        print(f"{winner.name} is the winner of this match." )
         
-        #Strech Goal for Fight Method
+        if not self.abilities and not opponent.abilities:
+            return ("Draw")
+
+        while self.is_alive() and opponent.is_alive():
+            opponent_damage = self.attack()
+            self_damage = opponent.attack()
+            
+            opponent.take_damage(opponent_damage)
+            self.take_damage(self_damage)
         
-        # chance = self.starting_health + opponent.starting_health
-        # percentage1 = self.starting_health/chance
-        # percentage2 = opponent.starting_health/chance
+       
+        if self.is_alive():
+            print(f"{self.name} won!")
+        elif opponent.is_alive():
+            print(f"{opponent.name} won!")
 
     #Add and Attack with Ability 
     def add_ability(self, ability):
@@ -69,8 +72,14 @@ class Hero:
         
         
 if __name__ =="__main__":
-    hero = Hero("Grace Hopper", 200)
-    hero.take_damage(150)
-    print(hero.is_alive())
-    hero.take_damage(15000)
-    print(hero.is_alive())
+    hero1 = Hero("Wonder Woman")
+    hero2 = Hero("Dumbledore")
+    ability1 = Ability("Super Speed", 300)
+    ability2 = Ability("Super Eyes", 130)
+    ability3 = Ability("Wizard Wand", 80)
+    ability4 = Ability("Wizard Beard", 20)
+    hero1.add_ability(ability1)
+    hero1.add_ability(ability2)
+    hero2.add_ability(ability3)
+    hero2.add_ability(ability4)
+    hero1.fight(hero2)
